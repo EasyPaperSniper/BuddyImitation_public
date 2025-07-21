@@ -1,0 +1,1 @@
+from .GO2Arx5_config import *

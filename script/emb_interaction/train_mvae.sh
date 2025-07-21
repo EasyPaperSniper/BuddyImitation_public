@@ -1,0 +1,1 @@
+./orbit.sh -p ./transmimicV2_interaction/train/embed_interaction/train_MVAE.py 

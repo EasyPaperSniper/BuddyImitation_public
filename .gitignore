@@ -1,0 +1,16 @@
+__pycache__/
+*.egg-info*
+results/embedding
+results/MVAE
+results/pretrain
+results/H*
+results/G*
+results/saved/trajectories/embd_test
+results/saved/videos
+results/videos
+
+motion_data/interGen/*_ori
+motion_data/interGen/annots
+motion_data/interGen/ori
+motion_data/interGen/labeled*
+*DS*
