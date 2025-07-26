@@ -128,15 +128,6 @@ def get_log_dir(env_cfg, train_cfg, args, log_root=None):
 
 
 
-def dump_cfg(env_cfg, train_cfg, log_dir):
-    from TM2_buddyImitation.utils.isaac_utils.io import dump_pickle, dump_yaml
-    
-    dump_yaml(os.path.join(log_dir, "params", "env.yaml"), env_cfg)
-    dump_yaml(os.path.join(log_dir, "params", "train.yaml"), train_cfg)
-    dump_pickle(os.path.join(log_dir, "params", "env.pkl"), env_cfg)
-    dump_pickle(os.path.join(log_dir, "params", "train.pkl"), train_cfg)
-
-
 def set_seed(seed):
     if seed == -1:
         seed = np.random.randint(0, 10000)

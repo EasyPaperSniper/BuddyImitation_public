@@ -33,6 +33,7 @@ class TM2Cfg(BaseConfig):
     class demo:
         demo_name = 'sparring'
         data_dir = TM2_ROOT_DIR+'/TM2_buddyImitation/results/saved/trajectories/dataset/{}.npy'.format(demo_name)
+        EIG_dir = TM2_ROOT_DIR+'/TM2_buddyImitation/results/saved/trajectories/dataset/{}_EIG.npy'.format(demo_name)
         ref_horizon = 20
 
     
