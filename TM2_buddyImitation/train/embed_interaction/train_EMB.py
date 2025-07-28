@@ -5,7 +5,6 @@ from TM2_buddyImitation import TM2_ROOT_DIR
 from TM2_buddyImitation.runner.TM2_Runners import Embeding_Trainer
 from TM2_buddyImitation.runner.learning_module import Graph_Embedding, MotionVAE
 from TM2_buddyImitation.train.embed_interaction.config import EmbeddingLearningCfg
-from TM2_buddyImitation.train.embed_interaction.train_MVAE import convert_st_to_pose
 
 
 from TM2_buddyImitation.utils.quaterion import *
