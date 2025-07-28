@@ -1,5 +1,5 @@
-asset_path: /home/tianyu/Documents/research/orbit/transmimicV2_interaction/envs/assets/humanoid/smpl_humanoid/smpl_humanoid.urdf
-usd_dir: /home/tianyu/Documents/research/orbit/transmimicV2_interaction/envs/assets/humanoid/smpl_humanoid/usd
+asset_path: /home/tianyu/Documents/research/orbit/TM2_buddyImitation/envs/assets/humanoid/smpl_humanoid/smpl_humanoid.urdf
+usd_dir: /home/tianyu/Documents/research/orbit/TM2_buddyImitation/envs/assets/humanoid/smpl_humanoid/usd
 usd_file_name: smpl_humanoid.usd
 force_usd_conversion: true
 make_instanceable: true

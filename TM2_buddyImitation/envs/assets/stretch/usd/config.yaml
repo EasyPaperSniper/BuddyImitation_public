@@ -1,5 +1,5 @@
-asset_path: /home/tianyu/Documents/research/orbit/transmimicV2_interaction/envs/assets/stretch/uncalib_stretch.urdf
-usd_dir: /home/tianyu/Documents/research/orbit/transmimicV2_interaction/envs/assets/stretch/usd
+asset_path: /home/tianyu/Documents/research/orbit/TM2_buddyImitation/envs/assets/stretch/uncalib_stretch.urdf
+usd_dir: /home/tianyu/Documents/research/orbit/TM2_buddyImitation/envs/assets/stretch/usd
 usd_file_name: stretch.usd
 force_usd_conversion: true
 make_instanceable: true

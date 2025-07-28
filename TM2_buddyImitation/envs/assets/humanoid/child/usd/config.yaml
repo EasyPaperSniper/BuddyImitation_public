@@ -1,5 +1,5 @@
-asset_path: /home/tli/Documents/research/orbit/transmimicV2_interaction/envs/assets/humanoid/child/child.urdf
-usd_dir: /home/tli/Documents/research/orbit/transmimicV2_interaction/envs/assets/humanoid/child/usd
+asset_path: /home/tli/Documents/research/orbit/TM2_buddyImitation/envs/assets/humanoid/child/child.urdf
+usd_dir: /home/tli/Documents/research/orbit/TM2_buddyImitation/envs/assets/humanoid/child/usd
 usd_file_name: child.usd
 force_usd_conversion: true
 make_instanceable: true

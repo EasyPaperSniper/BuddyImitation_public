@@ -7,8 +7,8 @@ from matplotlib.animation import FuncAnimation, FFMpegFileWriter
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 import mpl_toolkits.mplot3d.axes3d as p3
 import torch
-from transmimicV2_interaction.utils.ratation_conversion import *
-from transmimicV2_interaction.utils.quaterion import *
+from TM2_buddyImitation.utils.ratation_conversion import *
+from TM2_buddyImitation.utils.quaterion import *
 # import cv2
 
 
@@ -149,7 +149,7 @@ def plot_3d_motion(save_path, kinematic_tree, mp_joints, title, figsize=(10, 10)
 
 
 if __name__ == '__main__':
-    file_path ='./transmimicV2_interaction/motion_data/interGen'
+    file_path ='./TM2_buddyImitation/motion_data/interGen'
 
     motion_idx = 2091
     motion_names = ['/ori/c1/'+str(motion_idx), '/ori/c2/'+str(motion_idx)]
