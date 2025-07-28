@@ -192,3 +192,74 @@ class Interaction_Transfer(OnPolicyRunner):
                     for param in  self.alg.actor_critic.state_dict()[full_tgt_key].parameters():
                         param.requires_grad = False
        
+
+
+class Embeding_Trainer():
+    def __init__(self,
+                 train_cfg,
+                 dataset,
+                 device='cpu'):
+        self.device = device
+        self.cfg = train_cfg
+ 
+        embedding_net = Graph_Embedding(
+            dataset.obs_dim,
+            dataset.ig_dim,
+            predefine_graph= train_cfg['network']['predefine_graph'],
+            **train_cfg['network'])
+        
+        MotionVAE_net = MotionVAE(
+            dataset.obs_dim,
+            dataset.obs_dim,
+            **train_cfg['network'])
+        
+        if self.cfg['runner']['saved_mvae_dir']:
+            MotionVAE_net.load(self.cfg['runner']['saved_mvae_dir'], device=self.device)
+
+
+        self.alg = GraphEmbeddingLearning(
+                    embedding_net,
+                    MotionVAE_net,
+                    dataset,
+                    learning_rate=train_cfg["runner"]["learning_rate"],
+                    device=self.device,)
+
+        self.init_log()
+
+    def train(self, num_learning_iterations):
+        if self.log_dir is not None:
+            os.makedirs(self.log_dir, exist_ok=True)
+        # if self.log_dir is not None and self.writer is None and self.cfg["viz_tool"]=='wandb':
+        #     self.writer = wandb.init(project='TM2', name=self.cfg['experiment_name'], dir=self.log_dir)
+        
+        for it in range(num_learning_iterations):
+            total_loss, reconst_loss = self.alg.update_network(num_epochs=100, epoch_idx=it, batch_size=self.cfg["runner"]['batch_size'])
+            if it % self.save_interval == 0:
+                self.save(os.path.join(self.log_dir, 
+                                       'emb_{}_{}.pt'.format(it, self.cfg['seed'])))
+            if it % self.log_interval == 0:
+                self.log(locals())
+
+
+        self.log(locals())
+        self.save(os.path.join(self.log_dir, 
+                               'emb_{}_{}.pt'.format( num_learning_iterations, self.cfg['seed'])))
+
+
+    def log(self, locs):
+        print('Iteration: ', locs['it'])
+        print('Reconst loss: ', locs['reconst_loss'])
+        print('Total loss: ', locs['total_loss'])
+        
+        if self.writer is not None:
+            report_iter = {}
+            report_iter['Loss/toal_loss'] = locs['total_loss']
+            self.writer.log(report_iter, locs['it'])
+    
+    
+    def save(self, path):
+        torch.save({
+            'emb_net_model': self.alg.embedding_net.state_dict(),
+            'mvae_net_model': self.alg.MotionVAE_net.state_dict(),
+            'optimizer_state_dict': self.alg.emb_optimizer.state_dict(),
+            }, path)
