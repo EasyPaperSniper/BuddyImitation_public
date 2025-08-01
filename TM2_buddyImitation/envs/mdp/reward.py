@@ -205,24 +205,9 @@ class TM2RewardManager(TM2SimpleRewardManager):
 
     ###############  main rewards  ##########################
     def _reward_tracking_graph(self,env):
-        c1_ref = env.cur_ref_motion_r1
-        c2_ref = env.cur_ref_motion_r2
-        c1_ref_root = c1_ref[:, 0:3] 
-        c2_ref_root = c2_ref[:, 0:3] 
-        
-        
-        delta_root_ref = c1_ref_root[:,0:2] - c2_ref_root[:,0:2]
-        delta_root_cur = env.rob_root_states[:,0:2] - env.rob_root_states_r2[:,0:2]
         
 
-        delta_root_c1 = torch.norm(c1_ref_root[:,0:2]  - env.rob_root_states[:,0:2], dim=-1)
-        delta_root_c2 = torch.norm(c2_ref_root[:,0:2]  - env.rob_root_states_r2[:,0:2], dim=-1)
-        root_pos_error = torch.exp(-(delta_root_c1+delta_root_c2))
-        
-        
-        root_rel_pos_error = torch.exp(-torch.norm(delta_root_ref - delta_root_cur, dim=-1))
-
-        return   root_rel_pos_error + root_pos_error
+        return   torch.exp(-torch.norm(env.delta_graph, dim=-1))
 
 
 
